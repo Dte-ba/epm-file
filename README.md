@@ -1,40 +1,43 @@
-<big><h1 align="center">epm-file</h1></big>
+# EPM File
 
-<p align="center">
-  <a href="https://npmjs.org/package/epm-file">
-    <img src="https://img.shields.io/npm/v/epm-file.svg?style=flat-square"
-         alt="NPM Version">
-  </a>
+Read/Write epm's files
 
-  <a href="https://coveralls.io/r/Dte-ba/epm-file">
-    <img src="https://img.shields.io/coveralls/Dte-ba/epm-file.svg?style=flat-square"
-         alt="Coverage Status">
-  </a>
+# File Structure
 
-  <a href="https://travis-ci.org/Dte-ba/epm-file">
-    <img src="https://img.shields.io/travis/Dte-ba/epm-file.svg?style=flat-square"
-         alt="Build Status">
-  </a>
+[signature][version][content length][metadata][gzip-files][sign]
 
-  <a href="https://npmjs.org/package/epm-file">
-    <img src="http://img.shields.io/npm/dm/epm-file.svg?style=flat-square"
-         alt="Downloads">
-  </a>
+- Signature `45 50 4d` (3 first bytes)
+- Version `00 01` (2 bytes)
+- Content Length (for version v1, 4 bytes)
+- Metadata
+- Sign (hash signed)
 
-  <a href="https://david-dm.org/Dte-ba/epm-file.svg">
-    <img src="https://david-dm.org/Dte-ba/epm-file.svg?style=flat-square"
-         alt="Dependency Status">
-  </a>
-
-  <a href="https://github.com/Dte-ba/epm-file/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/epm-file.svg?style=flat-square"
-         alt="License">
-  </a>
-</p>
-
-<p align="center"><big>
-Read/Write epm files
-</big></p>
+```js
+// the metadata structure
+{
+  packageVersion: Integer,
+  uid: String,
+  title: String,
+  files: [,
+    {
+      entry: String (relative filename),
+      file: String filename,
+      length: String (the file content length)
+    }
+  ],
+  tags: [String],
+  content: { (Custom content here) },
+  source: [ 
+    { 
+      author: String,
+      reference: String
+    } 
+  ],
+  collaborators: [],
+  createdAt: Date,
+  updatedAt: Date
+}
+```
 
 
 ## Install
@@ -54,17 +57,3 @@ epmFile() // true
 ## License
 
 MIT © [Delmo](http://github.com/Dte-ba)
-
-[npm-url]: https://npmjs.org/package/epm-file
-[npm-image]: https://img.shields.io/npm/v/epm-file.svg?style=flat-square
-
-[travis-url]: https://travis-ci.org/Dte-ba/epm-file
-[travis-image]: https://img.shields.io/travis/Dte-ba/epm-file.svg?style=flat-square
-
-[coveralls-url]: https://coveralls.io/r/Dte-ba/epm-file
-[coveralls-image]: https://img.shields.io/coveralls/Dte-ba/epm-file.svg?style=flat-square
-
-[depstat-url]: https://david-dm.org/Dte-ba/epm-file
-[depstat-image]: https://david-dm.org/Dte-ba/epm-file.svg?style=flat-square
-
-[download-badge]: http://img.shields.io/npm/dm/epm-file.svg?style=flat-square
