@@ -4,56 +4,68 @@ Read/Write epm's files
 
 # File Structure
 
-[signature][version][content length][metadata][gzip-files][sign]
+[signature][version][content length][gzip-files][metadata]
 
-- Signature `45 50 4d` (3 first bytes)
-- Version `00 01` (2 bytes)
-- Content Length (for version v1, 4 bytes)
-- Metadata
-- Sign (hash signed)
+offset   |bytes      |description
+---------|-----------|-----------
+0|3|`0x45504d` magic number
+3|1|Version needed to read the file
+4|4|Content Length
+8|n|Gzip files
+n|EOF|Metadata
+
+## Metadata
+
+[base64 encoded metadata](.[asymmetric signature] optional)
 
 ```js
 // the metadata structure
 {
-  packageVersion: Integer,
+  // ID único
   uid: String,
+  // versionado
+  version: Integer,
+    
+  // tipo de paquete
+  type: String,
+  // título
   title: String,
-  files: [,
-    {
-      entry: String (relative filename),
-      file: String filename,
-      length: String (the file content length)
-    }
-  ],
+  // descripción o ficha técnica
+  description: String,
+  // observaciones del contenido (visualización)
+  remark: String,
+  // categorización del contenido
+  category: [String],
+  // palabras claves
   tags: [String],
-  content: { (Custom content here) },
-  source: [ 
+  // contenido personalizado
+  custom: { /*(Custom content here)*/ },
+  // fuente\/s del contenido
+  sources: [ 
     { 
       author: String,
       reference: String
     } 
   ],
-  collaborators: [],
+  // colaboradores/curadores 'Name Lastname <email>'
+  collaborators: [String],
+
+  // archivos
+  files: [
+    {
+      entry: String, /*(relative filename)*/
+      length: String, /*(the file content length)*/
+      comment: String /*(the file comment)*/
+    }
+  ],
+
+  // fecha de creación
   createdAt: Date,
+  //fecha de actualización
   updatedAt: Date
 }
 ```
 
-
-## Install
-
-```sh
-npm i -D epm-file
-```
-
-## Usage
-
-```js
-import epmFile from "epm-file"
-
-epmFile() // true
-```
-
 ## License
 
-MIT © [Delmo](http://github.com/Dte-ba)
+MIT © [DTE](http://github.com/Dte-ba)

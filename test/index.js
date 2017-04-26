@@ -1,7 +1,21 @@
-import test from "tape"
-import epmFile from "../src"
+import 'babel-polyfill';
+import assert from 'assert';
+import EpmFile from "../src"
 
-test("epmFile", (t) => {
-  t.plan(1)
-  t.equal(true, epmFile(), "return true")
-})
+describe('EpmFile', function() {
+
+  describe('#run', () => {
+
+    it('should be instancied an EpmFile', (done) => {
+      try {
+        let file = new EpmFile();
+        done();
+      } catch(err){
+        console.log(err);
+        done(new Error('Can\t be instancied'));
+      }
+    });
+
+  });
+
+});
