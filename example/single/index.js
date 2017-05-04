@@ -19,7 +19,7 @@ let write = () => {
   file.addEntry('assets/front.jpg', '/home/nacho/tmp/_assets/front.jpg');
   file.addEntry('files/leyenda.ppsx', '/home/nacho/tmp/_files/leyenda.ppsx');
   //
-  file.save(path.join(__dirname, '../output/'))
+  file.save(path.join(__dirname, '../output/output.epf'))
       .then(() => {
         console.log('ready!')
       })
@@ -30,7 +30,7 @@ let write = () => {
 }
 
 console.time('readed');
-write();
+read();
 console.timeEnd('readed');
 
 //var input = 'eyJ1aWQiOiIyYzhkYTIyNy02ZGVjLTRmMjMtODM4Zi0zN2I1MzhlY2UwZDQiLCJ2ZXJzaW9uIjoxLCJ0eXBlIjoiZGVmYXVsdCIsInRpdGxlIjoiIiwiZGVzY3JpcHRpb24iOiIiLCJyZW1hcmsiOiIiLCJjYXRlZ29yeSI6IiIsInRhZ3MiOltdLCJjdXN0b20iOnt9LCJzb3VyY2VzIjpbXSwiY29sbGFib3JhdG9ycyI6W10sImZpbGVzIjpbXSwiY3JlYXRlZEF0IjoxNDkyMTQxNTgyMjYzLCJ1cGRhdGVkQXQiOjE0OTIxNDE1ODIyNjR9';

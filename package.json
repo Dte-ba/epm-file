@@ -1,6 +1,6 @@
 {
   "name": "epm-file",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Read/Write epm files",
   "main": "dist/index.js",
   "files": [

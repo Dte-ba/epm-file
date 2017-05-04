@@ -196,9 +196,7 @@ export default class EpmFile {
 
     this.getAsBuffer()
         .then(buffer => {
-          let fullname = path.resolve(filename, 'output.epf');
-          
-          //console.log(`writing ${fullname}`);
+          let fullname = path.resolve(filename);
 
           fs.writeFile(fullname, buffer, err => {
             if (err){
