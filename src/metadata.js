@@ -17,6 +17,7 @@ export default class Metadata {
 
     this._title = '';
     this._description = '';
+    this._summary = '';
     this._remark = '';
     this._category = '';
     this._tags = [];
@@ -65,6 +66,14 @@ export default class Metadata {
   set description(value) {
     if (_typeok(value, 'string', 'description')){
       this._description = value;
+    }    
+  }
+
+  // the summary of the content
+  get summary() { return this._summary; }
+  set summary(value) {
+    if (_typeok(value, 'string', 'summary')){
+      this._summary = value;
     }    
   }
 

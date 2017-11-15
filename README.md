@@ -32,6 +32,8 @@ n|EOF|Metadata
   title: String,
   // descripción o ficha técnica
   description: String,
+  // resumen
+  summary: String,
   // observaciones del contenido (visualización)
   remark: String,
   // categorización del contenido
